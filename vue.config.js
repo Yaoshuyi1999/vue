@@ -5,5 +5,5 @@ module.exports = defineConfig({
     open: true,
     host:'localhost'
   },
-  // lintOnSave:false,
+  lintOnSave:false,
 })
