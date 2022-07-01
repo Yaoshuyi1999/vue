@@ -10,7 +10,7 @@ import moment from 'moment'
 export default {
   data(){
     return{
-      number:1636450540055
+      time:1636450540055
     }
   },
   filters:{
