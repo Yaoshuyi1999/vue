@@ -3,6 +3,7 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
+import "bootstrap/dist/css/bootstrap.css"
 
 Vue.filter('toDown', (val) => {
   return val.toLowerCase()
