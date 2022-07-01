@@ -1,7 +1,7 @@
 <template>
   <div>
-    <p>国内网站粉丝数量：{{number|myriad}}</p>
-    <p>国外网站粉丝数量：{{number|thousand}}</p>
+    <p>国内网站粉丝数量：{{number|myriad(10000,'万')}}</p>
+    <p>国外网站粉丝数量：{{number|myriad(1000,'千')}}</p>
   </div>
 </template>
 
@@ -13,11 +13,8 @@ export default {
     }
   },
   filters:{
-    myriad(val){
-      return val/10000+'万'
-    },
-    thousand(val){
-      return val/1000+'千'
+    myriad(val,spilt,num){
+      return val/spilt+num
     }
   }
 }

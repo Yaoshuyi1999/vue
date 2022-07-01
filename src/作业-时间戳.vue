@@ -1,7 +1,7 @@
 <template>
   <div>
-    <p>{{time|myriad}}</p>
-    <p>{{time|thousand}}</p>
+    <p>{{time|myriad('-')}}</p>
+    <p>{{time|myriad('/')}}</p>
   </div>
 </template>
 
@@ -14,11 +14,8 @@ export default {
     }
   },
   filters:{
-    myriad(val){
-      return moment(val).format('YYYY-MM-DD')
-    },
-    thousand(val){
-      return moment(val).format('YYYY/MM/DD')
+    myriad(val,spilt){
+      return moment(val).format(`YYYY${spilt}MM${spilt}DD`)
     }
   }
 }

@@ -1,24 +1,20 @@
 <template>
   <div>
-    <p>{{time|myriad}}</p>
-    <p>{{time|thousand}}</p>
+    <p>国内网站粉丝数量：{{number|myriad(10000,'万')}}</p>
+    <p>国外网站粉丝数量：{{number|myriad(1000,'千')}}</p>
   </div>
 </template>
 
 <script>
-import moment from 'moment'
 export default {
   data(){
     return{
-      time:1636450540055
+      number:1876986
     }
   },
   filters:{
-    myriad(val){
-      return moment(val).format('YYYY-MM-DD')
-    },
-    thousand(val){
-      return moment(val).format('YYYY/MM/DD')
+    myriad(val,spilt,num){
+      return val/spilt+num
     }
   }
 }
