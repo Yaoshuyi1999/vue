@@ -1,18 +1,11 @@
 <template>
   <div>
-    <dog3 v-for="(item, index) in arr" :key="index" :dog="item" @love=loveFn></dog3>
-
-    <hr />
-    <p>显示喜欢的狗:</p>
-    <ul>
-      <li v-for="(item, index) in loveArr" :key="index">{{ item }}</li>
-    </ul>
-
+    <dog2 v-for="(item, index) in arr" :key="index" :dog="item"></dog2>
   </div>
 </template>
 
 <script>
-import dog3 from './components/03dog3'
+import dog2 from './components/02dog2';
 export default {
   data() {
     return {
@@ -49,16 +42,10 @@ export default {
           dogName: '萨摩耶',
         },
       ],
-      loveArr: []
     };
   },
   components: {
-    dog3
-  },
-  methods: {
-    loveFn(dogName) {
-      this.loveArr.push(dogName)
-    },
+    dog2,
   },
 };
 </script>
