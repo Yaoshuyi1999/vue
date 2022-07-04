@@ -11,7 +11,7 @@
       <thead>
         <tr>
           <th>
-            <input type="checkbox" /> <span>全选</span>
+            <input type="checkbox" v-model="isAll"/> <span>全选</span>
           </th>
           <th>名称</th>
           <th>价格</th>
@@ -21,18 +21,17 @@
         </tr>
       </thead>
       <tbody>
-        <shop_tr v-for="(obj,index) in goodList" :key="index"
-          :name='obj.name'
-          :price='obj.price'
-          :num='obj.num'
-          :checked='obj.num*obj.price'
-        ></shop_tr>
+        <shopTr 
+        v-for="(obj,index) in goodList" 
+        :key="index"
+        :info="obj"
+        ></shopTr>
       </tbody>
       <tfoot>
         <tr>
           <td>合计:</td>
           <td colspan="5">
-            
+            总件数：{{count}} 总价格：{{sum}}
           </td>
         </tr>
       </tfoot>
@@ -41,8 +40,7 @@
 </template>
 
 <script>
-import shop_tr from './components/shop_tr'
-import shop from './components/shop'
+import shopTr from './components/04shopTr.vue'
 export default {
   data() {
     return {
@@ -75,8 +73,27 @@ export default {
     };
   },
   components: {
-    shop,
-    shop_tr
+    shopTr
+  },
+  computed: {
+    count(){
+      return this.goodList.reduce((sum,next)=>{
+        return (sum=sum+next.num)
+      },0)
+    },
+    sum(){
+      return this.goodList.reduce((sum,next)=>{
+        return (sum=sum+next.price*next.num)
+      },0)
+    },
+    isAll:{
+      get(){
+        return this.goodList.every(ele=>ele.checked)
+      },
+      set(checked){
+        this.goodList.forEach(ele=>ele.checked=checked)
+      },
+    },
   }
 };
 </script>
