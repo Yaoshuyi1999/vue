@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import UseDirective from './components/07_UseDirective'
+import UseDirective from './components/UseDirective'
 export default {
   components: {
     UseDirective

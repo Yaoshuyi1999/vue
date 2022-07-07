@@ -1,6 +1,7 @@
 <template>
   <div>
-      <input type="text" v-focus v-model="value" v-number>
+    {{qwe}}
+      <input type="text" v-focus v-model="qwe" v-number="qwe">
       <!-- <input type="text" v-gfocus> -->
       <p v-color="colorStr" @click="colorStr='red'">修改文字颜色</p>
   </div>
@@ -18,7 +19,7 @@ export default {
     data(){
         return {
             colorStr: 'green',
-
+            qwe:''
         }
     },
     directives: {
@@ -29,14 +30,17 @@ export default {
             }
         },
         number:{
-            inserted(el){
-                console.log(el.value);
+            inserted(el,binding,vnode){
+                // console.log(el.value);
+                console.log(binding.expression);
                 el.value=el.value.replace(/[^\d.]/g,'')
+                vnode.context[binding.expression] = el.value
             },
-            update (el) {
+            update (el,binding,vnode) {
                 
                 el.value=el.value.replace(/[^\d.]/g,'*')
-                console.log(el.value);
+                vnode.context[binding.expression] = el.value
+                // console.log(el.value);
             }
         },
         color:{
