@@ -2,7 +2,7 @@
   <div>
     <MyHeader title="tabbar"></MyHeader>
     <div style="margin-top:45px">
-      <router-view></router-view>
+      <router-view :is="comName"></router-view>
     </div>
     <MyTabBar :list="tabList" @btnFn="btnFn"></MyTabBar>
   </div>
